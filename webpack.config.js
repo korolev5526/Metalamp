@@ -11,7 +11,10 @@ const filename = (ext) =>
 module.exports = {
   context: path.resolve(__dirname, "src"),
   mode: "development",
-  entry: "./js/index.js",
+  entry: {
+    main: "./js/index.js",
+    // ui: "./js/ui.js",
+  },
   output: {
     filename: `./js/${filename("js")}`,
     path: path.resolve(__dirname, "dist"),
@@ -25,15 +28,23 @@ module.exports = {
     },
     hot: true,
     compress: true,
-    open: true,
+    // open: true,
+    open: ["colors_type.html", "form_elements.html"],
     port: 3000,
   },
   devtool: "inline-source-map",
 
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, "src/pug/index.pug"),
-      filename: "index.html",
+      template: path.resolve(__dirname, "src/pug/UI_kit/colors_type.pug"),
+      filename: "colors_type.html",
+      minify: {
+        collapseWhitespace: isProd,
+      },
+    }),
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, "src/pug/UI_kit/form_elements.pug"),
+      filename: "form_elements.html",
       minify: {
         collapseWhitespace: isProd,
       },
