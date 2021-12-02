@@ -1,8 +1,11 @@
 body {
-  background: blue;
+  background: #e5e5e5;
+  font-size: 10px;
 }
 
-.contaner {
-  max-width: 1440px;
+.container {
+  max-width: 144rem;
   margin: 0 auto;
+  padding: 0;
+  border: 1px solid blue;
 }
